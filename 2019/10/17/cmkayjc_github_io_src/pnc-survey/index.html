@@ -5,16 +5,16 @@
   
 
   
-  <title>Hello World | Cmkayjc&#39;s Space</title>
+  <title>[PaperReading] A Survey of Motion Plannig and Control Techniques for Self-Driving Urban Vehicles | Cmkayjc&#39;s Space</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="Controllers Pure pursuit is for straight line. Not for parking task. Rear wheel based feed back is capible with both FORWARD&#x2F;BACKWARD moving Front wheel based feed back is easy to compute but hard for">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;08&#x2F;hello-world&#x2F;index.html">
+<meta property="og:title" content="[PaperReading] A Survey of Motion Plannig and Control Techniques for Self-Driving Urban Vehicles">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;17&#x2F;cmkayjc_github_io_src&#x2F;pnc-survey&#x2F;index.html">
 <meta property="og:site_name" content="Cmkayjc&#39;s Space">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="Controllers Pure pursuit is for straight line. Not for parking task. Rear wheel based feed back is capible with both FORWARD&#x2F;BACKWARD moving Front wheel based feed back is easy to compute but hard for">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-08T07:54:48.503Z">
+<meta property="og:updated_time" content="2019-11-08T08:40:11.830Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Cmkayjc&#39;s Space" type="application/atom+xml">
@@ -62,10 +62,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-cmkayjc_github_io_src/pnc-survey" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/11/08/hello-world/" class="article-date">
-  <time datetime="2019-11-08T07:54:48.502Z" itemprop="datePublished">2019-11-08</time>
+    <a href="/2019/10/17/cmkayjc_github_io_src/pnc-survey/" class="article-date">
+  <time datetime="2019-10-17T05:36:00.000Z" itemprop="datePublished">2019-10-17</time>
 </a>
     
   </div>
@@ -76,7 +76,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Hello World
+      [PaperReading] A Survey of Motion Plannig and Control Techniques for Self-Driving Urban Vehicles
     </h1>
   
 
@@ -84,24 +84,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <h3 id="Controllers"><a href="#Controllers" class="headerlink" title="Controllers"></a>Controllers</h3><ol>
+<li><strong>Pure pursuit</strong> is for <strong>straight line</strong>. Not for parking task.</li>
+<li><strong>Rear wheel based feed back</strong> is capible with both FORWARD/BACKWARD moving</li>
+<li><strong>Front wheel based feed back</strong> is easy to compute but hard for BACKWARD moving in parking </li>
+</ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/08/hello-world/" data-id="ck2pw40i70000as7ga7m92lio" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/10/17/cmkayjc_github_io_src/pnc-survey/" data-id="ck2pw40jb0007as7g1atz6fab" class="article-share-link">Share</a>
       
       
     </footer>
@@ -110,7 +102,7 @@
     
 <nav id="article-nav">
   
-    <a href="/2019/11/08/cmkayjc_github_io_src/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/11/08/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
@@ -120,9 +112,9 @@
     </a>
   
   
-    <a href="/2019/10/17/cmkayjc_github_io_src/pnc-survey/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/10/17/cmkayjc_github_io_src/paper-reading/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">[PaperReading] A Survey of Motion Plannig and Control Techniques for Self-Driving Urban Vehicles</div>
+      <div class="article-nav-title">paper reading</div>
     </a>
   
 </nav>
