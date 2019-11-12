@@ -5,13 +5,16 @@
   
 
   
-  <title>Archives: 2019/10 | Cmkayjc&#39;s Space</title>
+  <title>Control.md | Cmkayjc&#39;s Space</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Cmkayjc&#39;s Space">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;archives&#x2F;2019&#x2F;10&#x2F;index.html">
+  <meta name="description" content="Stability variants: Lyapunov stablity for any small \epsilon, \delta exists, so that when x(t0) &amp;lt; \delta, for any t&amp;gt;t0, x(t) &amp;lt; \epsilon   Uniform stability is a concept which guarantees that">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Control.md">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;11&#x2F;cmkayjc_github_io_src&#x2F;Control-md&#x2F;index.html">
 <meta property="og:site_name" content="Cmkayjc&#39;s Space">
+<meta property="og:description" content="Stability variants: Lyapunov stablity for any small \epsilon, \delta exists, so that when x(t0) &amp;lt; \delta, for any t&amp;gt;t0, x(t) &amp;lt; \epsilon   Uniform stability is a concept which guarantees that">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-11-12T08:23:56.062Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Cmkayjc&#39;s Space" type="application/atom+xml">
@@ -59,59 +62,78 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/10/17/cmkayjc_github_io_src/pnc-survey/" class="archive-article-date">
-  <time datetime="2019-10-17T05:36:00.000Z" itemprop="datePublished">Oct 17</time>
+        <section id="main"><article id="post-cmkayjc_github_io_src/Control-md" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/11/cmkayjc_github_io_src/Control-md/" class="article-date">
+  <time datetime="2019-11-11T03:17:42.000Z" itemprop="datePublished">2019-11-11</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/10/17/cmkayjc_github_io_src/pnc-survey/">[PaperReading] A Survey of Motion Plannig and Control Techniques for Self-Driving Urban Vehicles</a>
+    <h1 class="article-title" itemprop="name">
+      Control.md
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/10/17/cmkayjc_github_io_src/paper-reading/" class="archive-article-date">
-  <time datetime="2019-10-17T05:30:58.000Z" itemprop="datePublished">Oct 17</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/10/17/cmkayjc_github_io_src/paper-reading/">paper reading</a>
-    </h1>
-  
+        <h1 id="Stability-variants"><a href="#Stability-variants" class="headerlink" title="Stability variants:"></a>Stability variants:</h1><ul>
+<li><strong>Lyapunov stablity</strong> for any small \epsilon, \delta exists, so that when <code>x(t0) &lt; \delta</code>, for any t&gt;t0, <code>x(t) &lt; \epsilon</code>  </li>
+<li><strong>Uniform stability</strong> is a concept which guarantees that the equilibrium point is not losing stability.[1]</li>
+<li><strong>Asymptoptic stablity</strong>: t-&gt;0, |x(t)|-&gt;0, no quantity requirment on rate of convergence. <ul>
+<li>渐进稳定: 时间趋于无穷时系统趋于平衡点.</li>
+<li>局部渐进稳定: x初始时刻在平衡点附近, 则在该范围内渐进稳定</li>
+</ul>
+</li>
+<li><strong>Exponential stability</strong>: rate of convergence, constants m, \alpha, \epsilon<br>|x(t)|&lt;me^(-\alpha(t - t_0))|x(t)| holds for all |x(t0)|&lt; \epsilon and t &gt; t_0;</li>
+</ul>
+<h1 id="Lyapunov-Theory"><a href="#Lyapunov-Theory" class="headerlink" title="Lyapunov Theory"></a>Lyapunov Theory</h1><p>系统的Lyapunov函数(广义的能量函数)满足一定性质,则无需推导时变系统的微分方程,即可得出system trajectory的稳定性.</p>
+<p><a href="https://stanford.edu/class/ee363/lectures/lyap.pdf" target="_blank" rel="noopener">PPT</a></p>
+<p>x_e is the unique <strong>equilibrium</strong> point:</p>
+<ul>
+<li><strong>Global</strong> asymptotic statble: t-&gt;inf, x(t)-&gt;x_e, </li>
+<li><strong>Local</strong> asymptotic statble: for <code>|x(0)-x_e|&lt; R</code> ,t-&gt;inf, x(t)-&gt;x_e</li>
+</ul>
+<p><a href="http://web.tuat.ac.jp/~gvlab/ronbun/ReadingGroupControl/mls-lyap.pdf" target="_blank" rel="noopener">1.Lyapunov Statibility theory</a></p>
 
-    </header>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/11/cmkayjc_github_io_src/Control-md/" data-id="ck2vlalae00014a7g0q8qgt46" class="article-share-link">Share</a>
+      
+      
+    </footer>
   </div>
-</article>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/11/12/cmkayjc_github_io_src/Math-basics/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Math-basics.md
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2019/11/08/cmkayjc_github_io_src/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
   
+</nav>
 
+  
+</article>
 
 </section>
         
