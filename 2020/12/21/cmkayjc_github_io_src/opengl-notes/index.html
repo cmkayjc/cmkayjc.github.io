@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="Cmkayjc&#39;s Space">
 <meta property="og:description" content="EGL for create context for OpenGL on systems without X-serverEmbedded Systems &#x2F; Docker &#x2F; Remote Server has no x-server running over them. OpenGL cannot bind context for its pipline.  OpenGL Visualizat">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-12-21T12:13:45.316Z">
+<meta property="og:updated_time" content="2020-12-21T15:46:00.111Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Cmkayjc&#39;s Space" type="application/atom+xml">
@@ -86,14 +86,30 @@
       
         <h1 id="EGL-for-create-context-for-OpenGL-on-systems-without-X-server"><a href="#EGL-for-create-context-for-OpenGL-on-systems-without-X-server" class="headerlink" title="EGL for create context for OpenGL on systems without X-server"></a>EGL for create context for OpenGL on systems without X-server</h1><p>Embedded Systems / Docker / Remote Server has no x-server running over them. OpenGL cannot bind context for its pipline.</p>
 <ul>
-<li><a href="https://developer.nvidia.com/blog/egl-eye-opengl-visualization-without-x-server/" target="_blank" rel="noopener">OpenGL Visualization without an X Server</a></li>
-<li><a href="https://virtualgl.org/About/Introduction" target="_blank" rel="noopener">VirtualGL</a></li>
+<li><p><a href="https://developer.nvidia.com/blog/egl-eye-opengl-visualization-without-x-server/" target="_blank" rel="noopener">OpenGL Visualization without an X Server</a></p>
+</li>
+<li><p><a href="https://developer.nvidia.com/blog/linking-opengl-server-side-rendering/" target="_blank" rel="noopener">Pro Tip: Linking OpenGL for Server-Side Rendering</a></p>
+<ul>
+<li><p><em>“It does, however, require some slight modifications to your OpenGL context management code using EGL functions, as described in a previous post.”</em>    </p>
+</li>
+<li><p><em>“Using EGL also requires you to link your application to different libraries. This post is about how to correctly link a modern OpenGL application.”</em></p>
+</li>
+<li><p><em>“To use glX and OpenGL today, you should link against libOpenGL.so as well as libGLX.so. The first contains the OpenGL symbols, the latter the GLX symbols. If you want to use EGL context management instead, link against  libOpenGL.so and libEGL.so.”</em></p>
+</li>
+</ul>
+</li>
+<li><p><a href="https://virtualgl.org/About/Introduction" target="_blank" rel="noopener">VirtualGL</a></p>
+</li>
+<li><p><a href="https://developer.nvidia.com/opengl-driver" target="_blank" rel="noopener">OpenGL Driver Support</a></p>
+</li>
+<li><p><a href="https://github.com/hpcng/singularity/issues/1635#issuecomment-413705291" target="_blank" rel="noopener">eglGetDisplay return EGL_NO_DISPLAY? Use ‘strace’ to find the problem</a></p>
+</li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/12/21/cmkayjc_github_io_src/opengl-notes/" data-id="ckiyiuekd000b8s7g7sd36t9q" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/12/21/cmkayjc_github_io_src/opengl-notes/" data-id="ckizeg4e00009lb7ggx8w0re4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -103,9 +119,9 @@
 <nav id="article-nav">
   
   
-    <a href="/2020/12/21/cmkayjc_github_io_src/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2020/06/12/CMake-Notes/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">opengl-notes.md</div>
+      <div class="article-nav-title">CMake Notes</div>
     </a>
   
 </nav>
@@ -146,10 +162,6 @@
           </li>
         
           <li>
-            <a href="/2020/12/21/cmkayjc_github_io_src/">opengl-notes.md</a>
-          </li>
-        
-          <li>
             <a href="/2020/06/12/CMake-Notes/">CMake Notes</a>
           </li>
         
@@ -159,6 +171,10 @@
         
           <li>
             <a href="/2019/11/12/cmkayjc_github_io_src/Math-basics/">Math Basics</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/11/cmkayjc_github_io_src/Control-md/">Control Basic Knowledges</a>
           </li>
         
       </ul>
