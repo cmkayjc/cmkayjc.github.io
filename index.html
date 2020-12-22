@@ -83,8 +83,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="EGL-for-create-context-for-OpenGL-on-systems-without-X-server"><a href="#EGL-for-create-context-for-OpenGL-on-systems-without-X-server" class="headerlink" title="EGL for create context for OpenGL on systems without X-server"></a>EGL for create context for OpenGL on systems without X-server</h1><p>Embedded Systems / Docker / Remote Server has no x-server running over them. OpenGL cannot bind context for its pipline.</p>
-<ul>
+        <h1 id="EGL-for-create-context-for-OpenGL-on-systems-without-X-server"><a href="#EGL-for-create-context-for-OpenGL-on-systems-without-X-server" class="headerlink" title="EGL for create context for OpenGL on systems without X-server"></a>EGL for create context for OpenGL on systems without X-server</h1><p><strong>Keywords</strong>: <code>EGL</code>, <code>GLVND</code></p>
+<p>Embedded Systems / Docker / Remote Server has no x-server running over them. OpenGL needs <a href="https://www.khronos.org/egl" target="_blank" rel="noopener">EGL(Native Platform Graphics Interface)</a> to generate context (which uses to be an x-server display).</p>
+<p><a href="https://developer.nvidia.com/blog/linking-opengl-server-side-rendering/" target="_blank" rel="noopener">GLVND(the OpenGL Vendor Neutral Dispatch for Linux)</a> seperate <code>libGLX.so</code> &amp; <code>libOpenGL.so</code>, so that <code>libEGL</code> can be used to take place of <code>libGLX.so</code></p>
+<h4 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a><em>Reference</em>:</h4><ol>
 <li><p><a href="https://developer.nvidia.com/blog/egl-eye-opengl-visualization-without-x-server/" target="_blank" rel="noopener">OpenGL Visualization without an X Server</a></p>
 </li>
 <li><p><a href="https://developer.nvidia.com/blog/linking-opengl-server-side-rendering/" target="_blank" rel="noopener">Pro Tip: Linking OpenGL for Server-Side Rendering</a></p>
@@ -103,12 +105,12 @@
 </li>
 <li><p><a href="https://github.com/hpcng/singularity/issues/1635#issuecomment-413705291" target="_blank" rel="noopener">eglGetDisplay return EGL_NO_DISPLAY? Use ‘strace’ to find the problem</a></p>
 </li>
-</ul>
+</ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/12/21/cmkayjc_github_io_src/opengl-notes/" data-id="ckizeg4e00009lb7ggx8w0re4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/12/21/cmkayjc_github_io_src/opengl-notes/" data-id="ckizk5h7200090m7g39gt3kpd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -145,7 +147,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/12/CMake-Notes/" data-id="ckizeg4co0000lb7gh8b032ab" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/12/CMake-Notes/" data-id="ckizk5h5s00000m7g0kqt9azz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -190,7 +192,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/21/cmkayjc_github_io_src/Debug-How-To/" data-id="ckizeg4dx0006lb7g2fvwd3xv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/21/cmkayjc_github_io_src/Debug-How-To/" data-id="ckizk5h6r00030m7g9t3ihpag" class="article-share-link">Share</a>
       
       
     </footer>
@@ -230,7 +232,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/12/cmkayjc_github_io_src/Math-basics/" data-id="ckizeg4dr0004lb7g9ouxdobs" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/12/cmkayjc_github_io_src/Math-basics/" data-id="ckizk5h6u00050m7g5xaqhg6g" class="article-share-link">Share</a>
       
       
     </footer>
@@ -284,7 +286,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/11/cmkayjc_github_io_src/Control-md/" data-id="ckizeg4do0002lb7g24hw4j1n" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/11/cmkayjc_github_io_src/Control-md/" data-id="ckizk5h6q00020m7ghfq41azf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -333,7 +335,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/08/cmkayjc_github_io_src/hello-world/" data-id="ckizeg4dz0008lb7g9takc7ld" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/08/cmkayjc_github_io_src/hello-world/" data-id="ckizk5h7100080m7ghxow3f20" class="article-share-link">Share</a>
       
       
     </footer>
@@ -378,7 +380,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/17/cmkayjc_github_io_src/pnc-survey/" data-id="ckizeg4e3000blb7gav19hly1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/10/17/cmkayjc_github_io_src/pnc-survey/" data-id="ckizk5h73000a0m7gb5pu9mxv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -417,7 +419,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/17/cmkayjc_github_io_src/paper-reading/" data-id="ckizeg4e2000alb7g0ackfkfw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/10/17/cmkayjc_github_io_src/paper-reading/" data-id="ckizk5h75000b0m7gdbpv5jso" class="article-share-link">Share</a>
       
       
     </footer>
@@ -467,7 +469,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/27/cmkayjc_github_io_src/Code-Structure-Tips/" data-id="ckizeg4dp0003lb7ghvd0dqkw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/09/27/cmkayjc_github_io_src/Code-Structure-Tips/" data-id="ckizk5h6o00010m7g5xgs7w4q" class="article-share-link">Share</a>
       
       
     </footer>
@@ -508,7 +510,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/26/cmkayjc_github_io_src/Test-Driven-Development-Tips/" data-id="ckizeg4ds0005lb7g3ulr2qnk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/09/26/cmkayjc_github_io_src/Test-Driven-Development-Tips/" data-id="ckizk5h6v00060m7g56qe3mnu" class="article-share-link">Share</a>
       
       
     </footer>
