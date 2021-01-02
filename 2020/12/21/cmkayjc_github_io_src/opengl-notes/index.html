@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="Cmkayjc&#39;s Space">
 <meta property="og:description" content="EGL for create context for OpenGL on systems without X-serverKeywords: EGL, GLVND Embedded Systems &#x2F; Docker &#x2F; Remote Server has no x-server running over them. OpenGL needs EGL(Native Platform Graphics">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-12-22T05:38:23.912Z">
+<meta property="og:updated_time" content="2021-01-02T12:56:25.279Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Cmkayjc&#39;s Space" type="application/atom+xml">
@@ -86,7 +86,7 @@
       
         <h1 id="EGL-for-create-context-for-OpenGL-on-systems-without-X-server"><a href="#EGL-for-create-context-for-OpenGL-on-systems-without-X-server" class="headerlink" title="EGL for create context for OpenGL on systems without X-server"></a>EGL for create context for OpenGL on systems without X-server</h1><p><strong>Keywords</strong>: <code>EGL</code>, <code>GLVND</code></p>
 <p>Embedded Systems / Docker / Remote Server has no x-server running over them. OpenGL needs <a href="https://www.khronos.org/egl" target="_blank" rel="noopener">EGL(Native Platform Graphics Interface)</a> to generate context (which uses to be an x-server display).</p>
-<p><a href="https://developer.nvidia.com/blog/linking-opengl-server-side-rendering/" target="_blank" rel="noopener">GLVND(the OpenGL Vendor Neutral Dispatch for Linux)</a> seperate <code>libGLX.so</code> &amp; <code>libOpenGL.so</code>, so that <code>libEGL</code> can be used to take place of <code>libGLX.so</code></p>
+<p><a href="https://github.com/NVIDIA/libglvnd" target="_blank" rel="noopener">GLVND(the OpenGL Vendor Neutral Dispatch for Linux)</a> seperate <code>libGLX.so</code> &amp; <code>libOpenGL.so</code>, so that <code>libEGL</code> can be used to take place of <code>libGLX.so</code></p>
 <h4 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a><em>Reference</em>:</h4><ol>
 <li><p><a href="https://developer.nvidia.com/blog/egl-eye-opengl-visualization-without-x-server/" target="_blank" rel="noopener">OpenGL Visualization without an X Server</a></p>
 </li>
@@ -107,11 +107,21 @@
 <li><p><a href="https://github.com/hpcng/singularity/issues/1635#issuecomment-413705291" target="_blank" rel="noopener">eglGetDisplay return EGL_NO_DISPLAY? Use ‘strace’ to find the problem</a></p>
 </li>
 </ol>
+<h1 id="OpenGL-Operation-Flow"><a href="#OpenGL-Operation-Flow" class="headerlink" title="OpenGL Operation Flow"></a>OpenGL Operation Flow</h1><h2 id="CreateWindow"><a href="#CreateWindow" class="headerlink" title="CreateWindow"></a>CreateWindow</h2><h2 id="CreateOpenGLContext"><a href="#CreateOpenGLContext" class="headerlink" title="CreateOpenGLContext"></a>CreateOpenGLContext</h2><h2 id="Initialize-GLEW"><a href="#Initialize-GLEW" class="headerlink" title="Initialize GLEW"></a>Initialize GLEW</h2><p><a href="http://glew.sourceforge.net/" target="_blank" rel="noopener">GLEW</a> provides efficient run-time mechanisms for determining which OpenGL extensions are supported on the target platform. (the right glGenXXX is then available for your target platform)</p>
+<ol>
+<li><p>Create vertices shader &amp; fragment shader and link them by attach to a program.</p>
+ <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">my_program = glCreateProgram()</span><br><span class="line">glAttachShader(vertex_shader)</span><br><span class="line">glAttachShader(fragment_shader)</span><br><span class="line"><span class="comment">//glBindFragDataLocaltion(my_program,0,"outColor")</span></span><br><span class="line">glLinkProgram(my_program)</span><br><span class="line">glUseProgram(my_program)</span><br></pre></td></tr></table></figure></li>
+<li><p>Link vertex data &amp; attributes</p>
+ <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">    GLint posAttrib = glGetAttribLocation(shaderProgram, <span class="string">"position"</span>);</span><br><span class="line">    glEnableVertexAttribArray(posAttrib);</span><br><span class="line">    glVertexAttribPointer(posAttrib, <span class="number">2</span>, GL_FLOAT, GL_FALSE, <span class="number">5</span>*<span class="keyword">sizeof</span>(<span class="keyword">float</span>), <span class="number">0</span>);</span><br><span class="line">    </span><br><span class="line">    GLint colAttrib = glGetAttribLocation(shaderProgram, <span class="string">"color"</span>);</span><br><span class="line">    glEnableVertexAttribArray(colAttrib);</span><br><span class="line">    glVertexAttribPointer(colAttrib, <span class="number">3</span>, GL_FLOAT, GL_FALSE, <span class="number">5</span>*<span class="keyword">sizeof</span>(<span class="keyword">float</span>), (<span class="keyword">void</span>*)(<span class="number">2</span>*<span class="keyword">sizeof</span>(<span class="keyword">float</span>)));</span><br><span class="line">    ```    </span><br><span class="line"></span><br><span class="line">* glGenVAO / glGenVBO / glGenTextures</span><br><span class="line">* glBindXXX</span><br><span class="line">    * VBO shaders should be bound after VAO is bound;</span><br><span class="line"></span><br><span class="line"># Notes:</span><br><span class="line"></span><br><span class="line">### Enable blending <span class="keyword">for</span> multiple color buffers</span><br><span class="line"></span><br><span class="line">_**Phenomenon**_: 不同的color buffer上, 前一层color_attachment0上与后一层color_attachment1重叠的部分显示为黑色, 原因是fragment shader中在`<span class="keyword">if</span> write_to_attachment1` 不满足的时候, 没有定义向attachment0写入的颜色, 则会默认向该层写入undefined值.</span><br><span class="line"></span><br><span class="line">_**Reason**_: See [<span class="keyword">this</span> answer](https:<span class="comment">//stackoverflow.com/a/39546686/11310078):</span></span><br><span class="line"></span><br><span class="line">```md</span><br><span class="line">_<span class="string">"An output fragment always has values for each active color buffer, even if you didn't write them. This is true even if you don't declare a variable for that output value. If no value gets written to a particular fragment output location, then the value used will be undefined. But it will be something."</span>_</span><br></pre></td></tr></table></figure>
 
+</li>
+</ol>
+<p><em><strong>Solution</strong></em>: Enable <a href="https://www.khronos.org/opengl/wiki/Blending" target="_blank" rel="noopener">blending</a> 通过对不满足<code>if write_to_attachment1</code>的时候向其他attachments写入全透明的值即可.</p>
+<h3 id="Speed-up-pixel-data-transfer-with-PBO-Pixel-Buffer-Object"><a href="#Speed-up-pixel-data-transfer-with-PBO-Pixel-Buffer-Object" class="headerlink" title="Speed up pixel data transfer with PBO(Pixel Buffer Object)"></a>Speed up pixel data transfer with PBO(Pixel Buffer Object)</h3>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/12/21/cmkayjc_github_io_src/opengl-notes/" data-id="ckizk5h7200090m7g39gt3kpd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/12/21/cmkayjc_github_io_src/opengl-notes/" data-id="ckjfpn1ne000a1ws673ng71bs" class="article-share-link">Share</a>
       
       
     </footer>
@@ -191,7 +201,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2020 Cmkayjc<br>
+      &copy; 2021 Cmkayjc<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
