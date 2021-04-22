@@ -7,14 +7,14 @@
   
   <title>OpenGL Notes | Cmkayjc&#39;s Space</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="EGL for create context for OpenGL on systems without X-serverKeywords: EGL, GLVND Embedded Systems &#x2F; Docker &#x2F; Remote Server has no x-server running over them. OpenGL needs EGL(Native Platform Graphics">
+  <meta name="description" content="OpenGL BasicsDevice Context(platform) -&amp;gt; Display -&amp;gt; Surface &amp;amp; Context Device(platform) decide display. See https:&#x2F;&#x2F;www.khronos.org&#x2F;registry&#x2F;EGL&#x2F;extensions&#x2F;EXT&#x2F;EGL_EXT_platform_base.txt. 12Mu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OpenGL Notes">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;12&#x2F;21&#x2F;cmkayjc_github_io_src&#x2F;opengl-notes&#x2F;index.html">
 <meta property="og:site_name" content="Cmkayjc&#39;s Space">
-<meta property="og:description" content="EGL for create context for OpenGL on systems without X-serverKeywords: EGL, GLVND Embedded Systems &#x2F; Docker &#x2F; Remote Server has no x-server running over them. OpenGL needs EGL(Native Platform Graphics">
+<meta property="og:description" content="OpenGL BasicsDevice Context(platform) -&amp;gt; Display -&amp;gt; Surface &amp;amp; Context Device(platform) decide display. See https:&#x2F;&#x2F;www.khronos.org&#x2F;registry&#x2F;EGL&#x2F;extensions&#x2F;EXT&#x2F;EGL_EXT_platform_base.txt. 12Mu">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2021-01-02T12:56:25.279Z">
+<meta property="og:updated_time" content="2021-04-22T08:57:44.262Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Cmkayjc&#39;s Space" type="application/atom+xml">
@@ -84,7 +84,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="EGL-for-create-context-for-OpenGL-on-systems-without-X-server"><a href="#EGL-for-create-context-for-OpenGL-on-systems-without-X-server" class="headerlink" title="EGL for create context for OpenGL on systems without X-server"></a>EGL for create context for OpenGL on systems without X-server</h1><p><strong>Keywords</strong>: <code>EGL</code>, <code>GLVND</code></p>
+        <h1 id="OpenGL-Basics"><a href="#OpenGL-Basics" class="headerlink" title="OpenGL Basics"></a>OpenGL Basics</h1><p>Device Context(platform) -&gt; Display -&gt; Surface &amp; Context</p>
+<p>Device(platform) decide display. See <a href="https://www.khronos.org/registry/EGL/extensions/EXT/EGL_EXT_platform_base.txt" target="_blank" rel="noopener">https://www.khronos.org/registry/EGL/extensions/EXT/EGL_EXT_platform_base.txt</a>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Multiple calls made to eglGetPlatformDisplayEXT with the same &lt;platform&gt;</span><br><span class="line">    and &lt;native_display&gt; will return the same EGLDisplay handle.</span><br></pre></td></tr></table></figure>
+
+
+<p>OpenGL is a state machine. <a href="https://www.khronos.org/opengl/wiki/OpenGL_Context" target="_blank" rel="noopener">OpenGL Context</a> is a container of states. Bind OpenGL Objects’ states to a Context. Switch to current Context by glMakeCurrent()</p>
+<p><a href="https://www.khronos.org/registry/EGL/sdk/docs/man/html/eglGetCurrentDisplay.xhtml" target="_blank" rel="noopener">eglGetCurrentDisplay()</a> get EGLDisplay connecting to current context. </p>
+<h1 id="EGL-for-create-context-for-OpenGL-on-systems-without-X-server"><a href="#EGL-for-create-context-for-OpenGL-on-systems-without-X-server" class="headerlink" title="EGL for create context for OpenGL on systems without X-server"></a>EGL for create context for OpenGL on systems without X-server</h1><p><strong>Keywords</strong>: <code>EGL</code>, <code>GLVND</code></p>
 <p>Embedded Systems / Docker / Remote Server has no x-server running over them. OpenGL needs <a href="https://www.khronos.org/egl" target="_blank" rel="noopener">EGL(Native Platform Graphics Interface)</a> to generate context (which uses to be an x-server display).</p>
 <p><a href="https://github.com/NVIDIA/libglvnd" target="_blank" rel="noopener">GLVND(the OpenGL Vendor Neutral Dispatch for Linux)</a> seperate <code>libGLX.so</code> &amp; <code>libOpenGL.so</code>, so that <code>libEGL</code> can be used to take place of <code>libGLX.so</code></p>
 <h4 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a><em>Reference</em>:</h4><ol>
@@ -121,7 +128,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/12/21/cmkayjc_github_io_src/opengl-notes/" data-id="ckjfpn1ne000a1ws673ng71bs" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/12/21/cmkayjc_github_io_src/opengl-notes/" data-id="cknsnln8500052b7g1dwb9rd5" class="article-share-link">Share</a>
       
       
     </footer>
