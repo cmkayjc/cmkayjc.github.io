@@ -84,7 +84,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="OpenGL-Basics"><a href="#OpenGL-Basics" class="headerlink" title="OpenGL Basics"></a>OpenGL Basics</h1><p>Device Context(platform) -&gt; Display -&gt; Surface &amp; Context</p>
-<p>Device(platform) decide display. See <a href="https://www.khronos.org/registry/EGL/extensions/EXT/EGL_EXT_platform_base.txt" target="_blank" rel="noopener">https://www.khronos.org/registry/EGL/extensions/EXT/EGL_EXT_platform_base.txt</a>.</p>
+<p>Device(platform) decide <code>display</code>, <code>display</code> is a <strong>connection</strong> to device. See <a href="https://www.khronos.org/registry/EGL/extensions/EXT/EGL_EXT_platform_base.txt" target="_blank" rel="noopener">https://www.khronos.org/registry/EGL/extensions/EXT/EGL_EXT_platform_base.txt</a>.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Multiple calls made to eglGetPlatformDisplayEXT with the same &lt;platform&gt;</span><br><span class="line">    and &lt;native_display&gt; will return the same EGLDisplay handle.</span><br></pre></td></tr></table></figure>
 
 
@@ -93,6 +93,7 @@
 <h1 id="EGL-for-create-context-for-OpenGL-on-systems-without-X-server"><a href="#EGL-for-create-context-for-OpenGL-on-systems-without-X-server" class="headerlink" title="EGL for create context for OpenGL on systems without X-server"></a>EGL for create context for OpenGL on systems without X-server</h1><p><strong>Keywords</strong>: <code>EGL</code>, <code>GLVND</code></p>
 <p>Embedded Systems / Docker / Remote Server has no x-server running over them. OpenGL needs <a href="https://www.khronos.org/egl" target="_blank" rel="noopener">EGL(Native Platform Graphics Interface)</a> to generate context (which uses to be an x-server display).</p>
 <p><a href="https://github.com/NVIDIA/libglvnd" target="_blank" rel="noopener">GLVND(the OpenGL Vendor Neutral Dispatch for Linux)</a> seperate <code>libGLX.so</code> &amp; <code>libOpenGL.so</code>, so that <code>libEGL</code> can be used to take place of <code>libGLX.so</code></p>
+<h1 id="OpenGL-multithreading"><a href="#OpenGL-multithreading" class="headerlink" title="OpenGL multithreading"></a>OpenGL multithreading</h1><p><a href="https://www.imaginationtech.com/blog/understanding-opengl-es-multi-thread-multi-window-rendering/" target="_blank" rel="noopener">Understanding OpenGL ES: Multi-thread and multi-window rendering</a></p>
 <h4 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a><em>Reference</em>:</h4><ol>
 <li><p><a href="https://developer.nvidia.com/blog/egl-eye-opengl-visualization-without-x-server/" target="_blank" rel="noopener">OpenGL Visualization without an X Server</a></p>
 </li>
@@ -127,7 +128,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/12/21/cmkayjc_github_io_src/opengl-notes/" data-id="cknsnln8500052b7g1dwb9rd5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/12/21/cmkayjc_github_io_src/opengl-notes/" data-id="cknua5got0009g37g0uba4vrq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -164,7 +165,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/12/CMake-Notes/" data-id="cknsnln7000002b7gay0s6i9a" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/12/CMake-Notes/" data-id="cknua5gni0000g37g2pruep1l" class="article-share-link">Share</a>
       
       
     </footer>
@@ -209,7 +210,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/21/cmkayjc_github_io_src/Debug-How-To/" data-id="cknsnln8200032b7gdxte7t95" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/21/cmkayjc_github_io_src/Debug-How-To/" data-id="cknua5gof0001g37gefy2g1kr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -249,7 +250,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/12/cmkayjc_github_io_src/Math-basics/" data-id="cknsnln8600062b7g438n8xic" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/12/cmkayjc_github_io_src/Math-basics/" data-id="cknua5goj0004g37gcv8745ic" class="article-share-link">Share</a>
       
       
     </footer>
@@ -303,7 +304,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/11/cmkayjc_github_io_src/Control-md/" data-id="cknsnln7z00012b7g8pzh7on9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/11/cmkayjc_github_io_src/Control-md/" data-id="cknua5gog0002g37ggfzybw2a" class="article-share-link">Share</a>
       
       
     </footer>
@@ -352,7 +353,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/08/cmkayjc_github_io_src/hello-world/" data-id="cknsnln8f000a2b7gdug8cpfs" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/08/cmkayjc_github_io_src/hello-world/" data-id="cknua5gos0008g37g5o5m5m2y" class="article-share-link">Share</a>
       
       
     </footer>
@@ -397,7 +398,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/17/cmkayjc_github_io_src/pnc-survey/" data-id="cknsnln8g000b2b7gcgxvbb7l" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/10/17/cmkayjc_github_io_src/pnc-survey/" data-id="cknua5gow000bg37gb7s16c8i" class="article-share-link">Share</a>
       
       
     </footer>
@@ -436,7 +437,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/17/cmkayjc_github_io_src/paper-reading/" data-id="cknsnln8d00082b7g26fs4av2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/10/17/cmkayjc_github_io_src/paper-reading/" data-id="cknua5gov000ag37g7ytu48ck" class="article-share-link">Share</a>
       
       
     </footer>
@@ -486,7 +487,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/27/cmkayjc_github_io_src/Code-Structure-Tips/" data-id="cknsnln8400042b7gdnbt5obt" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/09/27/cmkayjc_github_io_src/Code-Structure-Tips/" data-id="cknua5goi0003g37g4u2ghd0m" class="article-share-link">Share</a>
       
       
     </footer>
@@ -527,7 +528,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/26/cmkayjc_github_io_src/Test-Driven-Development-Tips/" data-id="cknsnln8e00092b7ga9pzbmfu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/09/26/cmkayjc_github_io_src/Test-Driven-Development-Tips/" data-id="cknua5goq0007g37g81rtgd9f" class="article-share-link">Share</a>
       
       
     </footer>
