@@ -6,15 +6,15 @@
   
   <title>Xvfb notes | YW&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="What’s XvfbXvfb − virtual framebuffer X server for X Version 11 Debug x app in Xvfb Xvfb creats a virtual display (e.g. :x.x) x11vnc creats a VNC server to allow remote access to an existing X session">
+  <meta name="description" content="Brief steps Start XServer (Xvfb, xvfb-run) Run X app on display:screen created by XServer (xvfb-run) Run VNC Server for XSession(dispaly:screen), exposing port to host if vnc server runs in container">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Xvfb notes">
 <meta property="og:url" content="http://example.com/2024/10/07/cmkayjc_github_io_src/xvfb_notes/index.html">
 <meta property="og:site_name" content="YW&#39;s blog">
-<meta property="og:description" content="What’s XvfbXvfb − virtual framebuffer X server for X Version 11 Debug x app in Xvfb Xvfb creats a virtual display (e.g. :x.x) x11vnc creats a VNC server to allow remote access to an existing X session">
+<meta property="og:description" content="Brief steps Start XServer (Xvfb, xvfb-run) Run X app on display:screen created by XServer (xvfb-run) Run VNC Server for XSession(dispaly:screen), exposing port to host if vnc server runs in container">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-10-07T07:28:28.000Z">
-<meta property="article:modified_time" content="2024-10-07T07:29:35.423Z">
+<meta property="article:modified_time" content="2024-10-07T13:32:02.294Z">
 <meta property="article:author" content="YW">
 <meta name="twitter:card" content="summary">
   
@@ -93,21 +93,49 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h3 id="What’s-Xvfb"><a href="#What’s-Xvfb" class="headerlink" title="What’s Xvfb"></a>What’s Xvfb</h3><p><a target="_blank" rel="noopener" href="https://www.x.org/releases/X11R7.6/doc/man/man1/Xvfb.1.xhtml">Xvfb</a> − virtual framebuffer <a target="_blank" rel="noopener" href="https://www.x.org/releases/X11R7.6/doc/man/man1/Xserver.1.xhtml">X server</a> for X Version 11</p>
-<h3 id="Debug-x-app-in-Xvfb"><a href="#Debug-x-app-in-Xvfb" class="headerlink" title="Debug x app in Xvfb"></a>Debug x app in Xvfb</h3><ul>
-<li>Xvfb creats a virtual display (e.g. :x.x)</li>
-<li>x11vnc creats a VNC server to allow remote access to an existing X session.<ul>
-<li>: To connect to x11vnc server with “Screen Sharing” app on OS X, you need to start x11vnc Linux server as following(see <a target="_blank" rel="noopener" href="https://unix.stackexchange.com/questions/356569/how-to-connect-to-x11vnc-server-on-linux-from-os-x-macos#:~:text=If%20you%20want%20to%20connect%20to%20x11vnc%20server,use%20-ncache%20You%20have%20to%20use%20-passwd%20%5Bsource%5D">here</a>):  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x11vnc -display :0 -noxrecord -noxfixes -noxdamage -forever -passwd 123456</span><br></pre></td></tr></table></figure></li>
+        <h1 id="Brief-steps"><a href="#Brief-steps" class="headerlink" title="Brief steps"></a>Brief steps</h1><ul>
+<li>Start XServer (<code>Xvfb</code>, <code>xvfb-run</code>)</li>
+<li>Run X app on display:screen created by XServer (<code>xvfb-run</code>)</li>
+<li>Run VNC Server for XSession(dispaly:screen), exposing port to host if vnc server runs in container (<code>x11vnc</code>)</li>
+<li>Run VNC Viewer to connect to VNC Server (<code>vncviewer</code>)</li>
+</ul>
+<h1 id="Quick-cmds"><a href="#Quick-cmds" class="headerlink" title="Quick cmds"></a>Quick cmds</h1><ol>
+<li>start Xvfb to setup Xserver with a virtual screen on frame buffer  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xvfb-run -n SERVER_NUM -f <span class="string">&quot;path/to/.Xauthority&quot;</span> -s <span class="string">&quot;-screen 0 1920x1080x24 -terminate&quot;</span> rosrun cviz light_monitor_main ... <span class="comment">#in container</span></span><br></pre></td></tr></table></figure></li>
+<li>start x11vnc server in container(and exposes x11vnc server port to host) for remote access to XSession on Xvfb <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 59XX:59XX <span class="comment">#start container in host terminal, XX=SERVER_NUM</span></span><br></pre></td></tr></table></figure>
+ to connect from Mac OSX, disable <code>-ncache</code> and enable <code>-passwd xxxx</code> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x11vnc -storepasswd XXXX path/to/passwd/file</span><br><span class="line">x11vnc -display :SERVER_NUM -N -auth <span class="string">&quot;path/to/.Xauthority&quot;</span> -noxrecord -noxfixes -noxdamage -forever -rfbauth path/to/passwd/file</span><br></pre></td></tr></table></figure></li>
+<li>connect to x11vnc server from vnc client<ul>
+<li>Linux: connect to <code>host_ip:59XX</code> with <code>vncviewer</code></li>
+<li>MacOSX: connect to <code>host_ip:59XX</code> with <code>Screen Sharing App</code>.</li>
+</ul>
+</li>
+</ol>
+<h1 id="Xvfb"><a href="#Xvfb" class="headerlink" title="Xvfb"></a>Xvfb</h1><p><a target="_blank" rel="noopener" href="https://www.x.org/releases/X11R7.6/doc/man/man1/Xvfb.1.xhtml">Xvfb</a> − virtual framebuffer <a target="_blank" rel="noopener" href="https://www.x.org/releases/X11R7.6/doc/man/man1/Xserver.1.xhtml">X server</a> for X Version 11</p>
+<p><a target="_blank" rel="noopener" href="https://manpages.ubuntu.com/manpages/trusty/man1/xvfb-run.1.html">xvfb-run</a> run specified X client or command in a virtual X server environment, e.g. run <code>firefox</code> in xvfb:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xvfb-run -n 20 -s <span class="string">&quot;-screen 0 1440x1024x24 -terminate&quot;</span> -f <span class="string">&quot;./.Xauthority&quot;</span> firefox</span><br></pre></td></tr></table></figure>
+<ul>
+<li>using <code>-n 20</code> instead of <code>-a</code> to use fixed server_num(display num).</li>
+<li>using <code>-f &quot;Xauth FILE&quot;</code> to generate Xauthority file for x11vnc server</li>
+</ul>
+<h1 id="VNC-server"><a href="#VNC-server" class="headerlink" title="VNC server"></a>VNC server</h1><p><code>x11vnc</code> creats a VNC server to allow remote access to an existing X session.</p>
+<ul>
+<li><strong>x11vnc server in docker</strong>: forward port when start the container  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -p PORT:PORT</span><br></pre></td></tr></table></figure></li>
+<li><strong>For Mac OS X vnc viewer</strong>: To connect to x11vnc server with “Screen Sharing” app on OS X, you need to start x11vnc Linux server as following(see <a target="_blank" rel="noopener" href="https://unix.stackexchange.com/questions/356569/how-to-connect-to-x11vnc-server-on-linux-from-os-x-macos#:~:text=If%20you%20want%20to%20connect%20to%20x11vnc%20server,use%20-ncache%20You%20have%20to%20use%20-passwd%20%5Bsource%5D">here</a>):  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x11vnc -storepasswd XXXX path/to/passwd/file</span><br><span class="line">x11vnc -display :20 -auth <span class="string">&quot;PATH_TO_Xauthority_FILE&quot;</span> -N -noxrecord -noxfixes -noxdamage -forever -rfbauth path/to/passwd/file</span><br></pre></td></tr></table></figure>
+<ul>
 <li>you <em>can’t</em> use <code>-ncache</code></li>
 <li>you <em>have to</em> use <code>-passwd</code></li>
+<li>Xauthority file is generated by <code>xvfb-run</code> script with <code>-f &quot;PATH_TO_Xauthority_FILE&quot;</code></li>
+<li>display num <code>:20</code> is set to <em>server_num</em> set in <code>xvfb-run -n server_num ...</code> </li>
+<li><code>-N</code> set the <code>-rfbport</code> option to <code>5900+N</code> with <code>-display :N</code></li>
 </ul>
 </li>
 </ul>
+<h1 id="VNC-client"><a href="#VNC-client" class="headerlink" title="VNC client"></a>VNC client</h1><p>e.g. vncviewer for Ubuntu, Screen Sharing App for Mac OSX. <code>path/to/passwd/file</code> is generated by x11vnc</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vncviewer HOST_IP:PORT -passwd path/to/passwd/file</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/10/07/cmkayjc_github_io_src/xvfb_notes/" data-id="cm1ypcbcu000albvu1xdwgcxd" data-title="Xvfb notes" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/10/07/cmkayjc_github_io_src/xvfb_notes/" data-id="cm1z1t5z5000bzgvu6q71f2pk" data-title="Xvfb notes" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
